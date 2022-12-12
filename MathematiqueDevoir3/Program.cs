@@ -27,28 +27,28 @@ namespace MathematiqueDevoir3
                     case "1":
                         Console.WriteLine("Entrez la clé de transposition :");
                         key = Console.ReadLine();                   
-
                         break;
+
                     case "2":
                         try
                         {
                             Console.WriteLine("Entrez le nom du fichier :");
-
+                            message = LoadMessageFromFile(Console.ReadLine());
                         }
                         catch (Exception e)
                         {
                             Console.WriteLine(e.Message);
-                        }
-                                    
-
+                        }                                  
                         break;
+
                     case "3":
                         Console.WriteLine("Message chiffré :");
+                        Console.WriteLine(Chiffrement.Chiffrer(message, key));
 
                         break;
                     case "4":
                         Console.WriteLine("Message déchiffré :");
-
+                        Console.WriteLine(Chiffrement.Dechiffrer(message, key));
                         break;
                     default:
                         break;
@@ -61,6 +61,21 @@ namespace MathematiqueDevoir3
                 }
 
             }while (option != "5");
+        }
+
+        static string LoadMessageFromFile(string filePath)
+        {
+            string m = " ";
+            if (!File.Exists(filePath)) throw new Exception("Fichier introuvable.");
+            string[] lines = File.ReadAllLines(filePath);
+
+            if (lines.Length < 2)
+                throw new Exception("Fichier invalide.");
+
+            for (int i = 0; i < lines.Length; i++)           
+                m = m + lines[i];
+            
+            return m;
         }
     }
 }
