@@ -1,0 +1,15 @@
+C:\Users\alexy\Desktop\université\session 3\Math2\Devoir 3\MathematiqueDevoir3\MathematiqueDevoir3\bin\Debug\net6.0\MathematiqueDevoir3.exe
+C:\Users\alexy\Desktop\université\session 3\Math2\Devoir 3\MathematiqueDevoir3\MathematiqueDevoir3\bin\Debug\net6.0\MathematiqueDevoir3.deps.json
+C:\Users\alexy\Desktop\université\session 3\Math2\Devoir 3\MathematiqueDevoir3\MathematiqueDevoir3\bin\Debug\net6.0\MathematiqueDevoir3.runtimeconfig.json
+C:\Users\alexy\Desktop\université\session 3\Math2\Devoir 3\MathematiqueDevoir3\MathematiqueDevoir3\bin\Debug\net6.0\MathematiqueDevoir3.dll
+C:\Users\alexy\Desktop\université\session 3\Math2\Devoir 3\MathematiqueDevoir3\MathematiqueDevoir3\bin\Debug\net6.0\MathematiqueDevoir3.pdb
+C:\Users\alexy\Desktop\université\session 3\Math2\Devoir 3\MathematiqueDevoir3\MathematiqueDevoir3\obj\Debug\net6.0\MathematiqueDevoir3.csproj.AssemblyReference.cache
+C:\Users\alexy\Desktop\université\session 3\Math2\Devoir 3\MathematiqueDevoir3\MathematiqueDevoir3\obj\Debug\net6.0\MathematiqueDevoir3.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\alexy\Desktop\université\session 3\Math2\Devoir 3\MathematiqueDevoir3\MathematiqueDevoir3\obj\Debug\net6.0\MathematiqueDevoir3.AssemblyInfoInputs.cache
+C:\Users\alexy\Desktop\université\session 3\Math2\Devoir 3\MathematiqueDevoir3\MathematiqueDevoir3\obj\Debug\net6.0\MathematiqueDevoir3.AssemblyInfo.cs
+C:\Users\alexy\Desktop\université\session 3\Math2\Devoir 3\MathematiqueDevoir3\MathematiqueDevoir3\obj\Debug\net6.0\MathematiqueDevoir3.csproj.CoreCompileInputs.cache
+C:\Users\alexy\Desktop\université\session 3\Math2\Devoir 3\MathematiqueDevoir3\MathematiqueDevoir3\obj\Debug\net6.0\MathematiqueDevoir3.dll
+C:\Users\alexy\Desktop\université\session 3\Math2\Devoir 3\MathematiqueDevoir3\MathematiqueDevoir3\obj\Debug\net6.0\refint\MathematiqueDevoir3.dll
+C:\Users\alexy\Desktop\université\session 3\Math2\Devoir 3\MathematiqueDevoir3\MathematiqueDevoir3\obj\Debug\net6.0\MathematiqueDevoir3.pdb
+C:\Users\alexy\Desktop\université\session 3\Math2\Devoir 3\MathematiqueDevoir3\MathematiqueDevoir3\obj\Debug\net6.0\MathematiqueDevoir3.genruntimeconfig.cache
+C:\Users\alexy\Desktop\université\session 3\Math2\Devoir 3\MathematiqueDevoir3\MathematiqueDevoir3\obj\Debug\net6.0\ref\MathematiqueDevoir3.dll

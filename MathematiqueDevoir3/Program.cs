@@ -18,7 +18,8 @@ namespace MathematiqueDevoir3
                Console.WriteLine("2- Allez chercher le document incluant le message :");
                Console.WriteLine("3- Afficher le message chiffré :");
                Console.WriteLine("4- Afficher le message déchiffré :");
-               Console.WriteLine("Selectionné votre option :");
+               Console.WriteLine("5- Exit :");
+               Console.WriteLine("\nSelectionné votre option :");
 
            
 
@@ -69,12 +70,9 @@ namespace MathematiqueDevoir3
             if (!File.Exists(filePath)) throw new Exception("Fichier introuvable.");
             string[] lines = File.ReadAllLines(filePath);
 
-            if (lines.Length < 2)
-                throw new Exception("Fichier invalide.");
-
             for (int i = 0; i < lines.Length; i++)           
                 m = m + lines[i];
-            
+
             return m;
         }
     }
