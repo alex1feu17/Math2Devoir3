@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Reflection.PortableExecutable;
 using System.Text;
@@ -15,7 +16,7 @@ namespace MathematiqueDevoir3
         {
             int nbCol = 0;
             int nbLi = 0;
-            
+            string messageChiffrer = " ";
             cle = Regex.Replace(cle, @"\s", "");
 
             nbCol = cle.Length;
@@ -37,16 +38,24 @@ namespace MathematiqueDevoir3
                                          
                 }
                 
-            }
-            for (int i = 0; i < nbCol; i++)
+            }          
+            compt = 1;
+            int compt2 = 0;
+            while (compt != cle.Length+1)
             {
-                for (int y = 0; y < nbLi; y++)
+                if (compt.ToString() == cle[compt2].ToString())
                 {
-                    Console.Write(tabMessage[i, y]);
+                    for (int i = 0; i < nbLi; i++)                   
+                        messageChiffrer = messageChiffrer + tabMessage[i, compt2];
+                    
+                    compt++;
+                    compt2 = 0;
                 }
-                Console.Write("\n");
+                else
+                    compt2++;
+
             }
-            return "C";
+            return messageChiffrer;
         }
         public static String Dechiffrer(String message, String cle)
         {
