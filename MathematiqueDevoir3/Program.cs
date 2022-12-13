@@ -43,13 +43,13 @@ namespace MathematiqueDevoir3
                         break;
 
                     case "3":
-                        Console.WriteLine("Message chiffré :");
-                        Console.WriteLine(Chiffrement.Chiffrer(message, key));
+                        Console.WriteLine("Message : " + message);
+                        Console.WriteLine("Message chiffré :"+Chiffrement.Chiffrer(message, key));
 
                         break;
                     case "4":
-                        Console.WriteLine("Message déchiffré :");
-                        Console.WriteLine(Chiffrement.Dechiffrer(message, key));
+                        Console.WriteLine("Message chiffré :"+ Chiffrement.Chiffrer(message, key));
+                        Console.WriteLine("Message déchiffré :" +Chiffrement.Dechiffrer(Chiffrement.Chiffrer(message, key), key));
                         break;
                     default:
                         break;

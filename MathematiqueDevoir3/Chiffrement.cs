@@ -16,16 +16,18 @@ namespace MathematiqueDevoir3
         {
             int nbCol = 0;
             int nbLi = 0;
+            int compt = 0;
+            int compt2 = 0;
+            
             string messageChiffrer = " ";
+            
+                        
             cle = Regex.Replace(cle, @"\s", "");
-
             nbCol = cle.Length;
             nbLi = message.Length / nbCol;
+            char[,] tabMessage = new char[nbLi, nbCol];
 
-            char[,] tabMessage = new char[nbLi,nbCol];
-
-            int compt = 0;
-
+            // Transporte le message dans un tableau 2D
             for (int i = 0; i < nbCol; i++)
             {
                 for (int y = 0; y < nbLi; y++)
@@ -34,13 +36,12 @@ namespace MathematiqueDevoir3
                     {
                         tabMessage[i, y] = message[compt];
                         compt++;
-                    }
-                                         
+                    }                  
                 }
-                
             }          
             compt = 1;
-            int compt2 = 0;
+
+            // Chiffrer le message a l'aide du tableau
             while (compt != cle.Length+1)
             {
                 if (compt.ToString() == cle[compt2].ToString())
@@ -53,12 +54,31 @@ namespace MathematiqueDevoir3
                 }
                 else
                     compt2++;
-
             }
+            
             return messageChiffrer;
         }
         public static String Dechiffrer(String message, String cle)
         {
+            int nbCol = 0;
+            int nbLi = 0;
+            int compt = 0;
+            nbCol = cle.Length;
+            nbLi = message.Length / nbCol;
+            char[,] tabMessage = new char[nbLi, nbCol];
+
+            // Transporte le message chiffrer dans un tableau 2D
+            /*for (int i = 0; i < nbCol; i++)
+            {
+                for (int y = 0; y < nbLi; y++)
+                {
+                    if (compt != message.Length)
+                    {
+                        tabMessage[i, y] = message[compt];
+                        compt++;
+                    }
+                }
+            }*/
             return "D";
         }
     }
