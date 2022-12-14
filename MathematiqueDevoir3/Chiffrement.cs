@@ -31,8 +31,7 @@ namespace MathematiqueDevoir3
             int compt = 0;
             int compt2 = 0;
             int NUM = 31;
-            byte[] vi = new byte[1];
-            vi[0] = 00110;
+            
 
 
             string messageChiffrer = " ";
@@ -45,13 +44,13 @@ namespace MathematiqueDevoir3
             char[,] tabMessage = new char[nbLi, nbCol];
 
             // Transporte le message dans un tableau 2D
-            for (int i = 0; i < nbCol; i++)
+            for (int j = 0; j < nbCol; j++)
             {
                 for (int y = 0; y < nbLi; y++)
                 {
                     if (compt != message.Length)
                     {
-                        tabMessage[i, y] = message[compt];
+                        tabMessage[j, y] = message[compt];
                         compt++;
                     }                  
                 }
@@ -63,8 +62,8 @@ namespace MathematiqueDevoir3
             {
                 if (compt.ToString() == cle[compt2].ToString())
                 {
-                    for (int i = 0; i < nbLi; i++)
-                        messageChiffrer = messageChiffrer + tabMessage[i, compt2];
+                    for (int j = 0; j < nbLi; j++)
+                        messageChiffrer = messageChiffrer + tabMessage[j, compt2];
 
                     compt++;
                     compt2 = 0;
@@ -75,26 +74,47 @@ namespace MathematiqueDevoir3
 
             /*Console.WriteLine("Entrez la valeur du vecteur d'initialisation :");
             vi = Console.ReadLine();*/
+            byte[] vi = new byte[1];
+            vi[0] = 00110;
+            
 
             int[] messagevalue = new int[messageChiffrer.Length];
             byte[] messageBite = new byte[messageChiffrer.Length];
 
-            for (int i = 0; i < messageChiffrer.Length; i++)           
-                messagevalue[i] = messageChiffrer[i] & NUM;
+            //va chercher la valeur du char dans l'alphabet
+            for (int j = 0; j < messageChiffrer.Length; j++)           
+                messagevalue[j] = messageChiffrer[j] & NUM;
 
-            for (int i = 0; i < messageChiffrer.Length; i++)           
-                messageBite[i] =  (byte)messagevalue[i];
-
-            for (int i = 0; i < messageChiffrer.Length; i++)
-            {
-                if (i == 0)
-                    messagevalue[i] = (messagevalue[i] ^ vi[0]) + (byte)00001;
-                else
-                    messagevalue[i] = (messagevalue[i] ^ messagevalue[i - 1]) + (byte)00001;
-
-                Console.WriteLine(messagevalue[i]);
-            }
+            int n, i;
+            int[] a = new int[10];
+           
             
+            //transforme la valeur en byte 
+            for (int j = 0; j < messageChiffrer.Length; j++)
+            {
+                n = messagevalue[j];
+                for (i = 0; n > 0; i++)
+                {
+                    a[i] = n % 2;
+                    n = n / 2;
+                }
+                for (i = i - 1; i >= 0; i--)
+                {                   
+                    messageBite[j] = (byte)a[i];
+                }          
+            }
+                
+
+            /*for (int j = 0; j < messageChiffrer.Length; j++)
+            {
+                if (j == 0)
+                    messageBite[j] = (messageBite[j] ^ vi[0]) + (byte)00001;
+                else
+                    messageBite[j] = (messageBite[j] ^ messageBite[j - 1]) + (byte)00001;
+
+                //Console.WriteLine(messagevalue[i]);
+            }*/
+
 
             return messageChiffrer;
         }
