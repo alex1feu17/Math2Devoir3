@@ -76,7 +76,9 @@ namespace MathematiqueDevoir3
             vi = Console.ReadLine();*/
             byte[] vi = new byte[1];
             vi[0] = 00110;
-            
+
+            byte[] e = new byte[1];
+            e[0] = 00001;
 
             int[] messagevalue = new int[messageChiffrer.Length];
             byte[] messageBite = new byte[messageChiffrer.Length];
@@ -87,32 +89,42 @@ namespace MathematiqueDevoir3
 
             int n, i;
             int[] a = new int[10];
+            string binaryexpression = "";
            
             
             //transforme la valeur en byte 
             for (int j = 0; j < messageChiffrer.Length; j++)
             {
                 n = messagevalue[j];
+
+                if (n == 0)
+                    binaryexpression = "0";
+                else
+                    binaryexpression = "";
                 for (i = 0; n > 0; i++)
                 {
                     a[i] = n % 2;
                     n = n / 2;
                 }
+                
                 for (i = i - 1; i >= 0; i--)
                 {                   
-                    messageBite[j] = (byte)a[i];
-                }          
+                    binaryexpression = binaryexpression + a[i];
+                }
+                messageBite[j] = (byte)Int32.Parse(binaryexpression);
+                Console.WriteLine(messageBite[j]);
             }
                 
 
             /*for (int j = 0; j < messageChiffrer.Length; j++)
             {
+                Console.WriteLine(messageBite[j]);
                 if (j == 0)
-                    messageBite[j] = (messageBite[j] ^ vi[0]) + (byte)00001;
+                    messageBite[j] = (byte)((messageBite[j] ^ vi[0]) + e[0]);
                 else
-                    messageBite[j] = (messageBite[j] ^ messageBite[j - 1]) + (byte)00001;
+                    messageBite[j] = (byte)((messageBite[j] ^ messageBite[j - 1]) + e[0]);
 
-                //Console.WriteLine(messagevalue[i]);
+                Console.WriteLine(messageBite[j]);
             }*/
 
 
