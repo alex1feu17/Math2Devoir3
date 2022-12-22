@@ -1,79 +1,60 @@
-﻿using System.Linq.Expressions;
+﻿using System.Linq;
+using System.Linq.Expressions;
+using System.Text;
+
 namespace MathematiqueDevoir3
 {
     class Program
     {
         static void Main(string[] args)
         {
-           string key = " ";
-           string message = " ";
-           string option;
+            byte[] result = new byte[0];
 
-           do
-           {
-            
-               Console.Clear();
-               Console.WriteLine("Menu ");
-               Console.WriteLine("1- Entrez la clef de transposition :");
-               Console.WriteLine("2- Allez chercher le document incluant le message :");
-               Console.WriteLine("3- Afficher le message chiffré :");
-               Console.WriteLine("4- Afficher le message déchiffré :");
-               Console.WriteLine("5- Exit :");
-               Console.WriteLine("\nSelectionné votre option :");
+            string selection;
+            do
+            {
+                Console.Clear();
+                Console.WriteLine("[1] Chiffrer");
+                Console.WriteLine("[2] Déchiffrer");
+                Console.WriteLine("[3] Quitter");
+                Console.Write("\nSelectionnez une option: ");
 
-           
-
-                switch (option = Console.ReadLine())
+                switch (selection = Console.ReadLine())
                 {
                     case "1":
-                        Console.WriteLine("Entrez la clé de transposition :");
-                        key = Console.ReadLine();                   
-                        break;
+                        Console.Write("Entrez le message à chiffrer: ");
+                        string message = Console.ReadLine();
+                        Console.Write("Entrez la clé de transposition: ");
 
+                        result = Chiffrement.Chiffrer(message, Console.ReadLine());
+                        Console.WriteLine();
+
+                        Console.WriteLine("Message chiffré: " + Encoding.ASCII.GetString(result.Where(b => b >= 32).ToArray()));
+                        Console.WriteLine("Représentation binaire: [" + String.Join(", ", result.Select(b => Convert.ToString(b, 2)).ToArray()) + "]");
+                        break;
                     case "2":
-                        try
-                        {
-                            Console.WriteLine("Entrez le nom du fichier :");
-                            message = LoadMessageFromFile(Console.ReadLine());
+                        if (result.Length == 0) {
+                            Console.WriteLine("Aucun message à déchiffrer.");
+                            break;
                         }
-                        catch (Exception e)
-                        {
-                            Console.WriteLine(e.Message);
-                        }                                  
+                        Console.Write("Entrez la clé de transposition: ");
+                        string res = Chiffrement.Dechiffrer(result, Console.ReadLine());
+                        Console.WriteLine();
+                        Console.WriteLine("Message déchiffré: " + res);
                         break;
-
                     case "3":
-                        Console.WriteLine("Message : " + message);
-                        Console.WriteLine("Message chiffré :"+Chiffrement.Chiffrer(message, key));
-
-                        break;
-                    case "4":
-                        Console.WriteLine("Message chiffré :"+ Chiffrement.Chiffrer(message, key));
-                        Console.WriteLine("Message déchiffré :" +Chiffrement.Dechiffrer(Chiffrement.Chiffrer(message, key), key));
                         break;
                     default:
+                        Console.WriteLine("Sélection invalide.");
                         break;
                 }
 
-                if (!option.Equals("5"))
+                if (!selection.Equals("3"))
                 {
-                    Console.WriteLine("\nAppuyez sur une touche pour continuer...");
+                    Console.Write("\nAppuyez sur une touche pour continuer...");
                     Console.ReadLine();
                 }
-
-            }while (option != "5");
-        }
-
-        static string LoadMessageFromFile(string filePath)
-        {
-            string m = " ";
-            if (!File.Exists(filePath)) throw new Exception("Fichier introuvable.");
-            string[] lines = File.ReadAllLines(filePath);
-
-            for (int i = 0; i < lines.Length; i++)           
-                m = m + lines[i];
-
-            return m;
+            } while (selection != "3");
         }
     }
 }
