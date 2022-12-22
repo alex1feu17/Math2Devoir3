@@ -5,9 +5,7 @@ namespace MathematiqueDevoir3
 {
     static class Chiffrement
     {
-        // On retourne un byte[] plutôt qu'un string, car la conversion en string transforme les bytes > que 126 en 63, ce qui rend le déchiffrement impossible.
-        // Le résultat est donc stocké sous cette forme et converti en string lors de l'affichage.
-        public static byte[] Chiffrer(string message, string cle)
+        public static string Chiffrer(string message, string cle)
         {
             // On retire les espaces et on convertit la clé en int[]
             int[] key = cle.Replace(" ", "").Select(e => Convert.ToInt32(e.ToString())).ToArray();
@@ -26,7 +24,7 @@ namespace MathematiqueDevoir3
                     if (bytes.Length > index) tableau[l, c] = bytes[index++];
 
             // On alimente le résultat en parcourant le tableau
-            byte[] result = new byte[message.Length];
+            string result = "";
             index = 0;
             for (int i = 1; i <= key.Length; i++)
             {
@@ -37,15 +35,14 @@ namespace MathematiqueDevoir3
                     {
                         // On applique le chiffrement CBC en même temps qu'on alimente le résultat
                         vi ^= tableau[l, c];
-                        result[index++] = vi;
+                        result += Convert.ToChar(vi);
                     }
             }
 
             return result;
         }
         
-        // On recoit un message à déchiffrer sous forme d'un byte[] pour la raison expliqué plus haut.
-        public static string Dechiffrer(byte[] message, string cle)
+        public static string Dechiffrer(string message, string cle)
         {
             // On retire les espaces et on convertit la clé en int[]
             int[] key = cle.Replace(" ", "").Select(e => Convert.ToInt32(e.ToString())).ToArray();
@@ -53,6 +50,8 @@ namespace MathematiqueDevoir3
             Console.Write("Entrez le vecteur d'initialisation: ");
             byte vi = Convert.ToByte(Console.ReadLine(), 2);
 
+            // On convertit le message en byte[]
+            byte[] bytes = Encoding.ASCII.GetBytes(message);
             byte[,] tableau = new byte[(int)Math.Ceiling((double)message.Length / key.Length), key.Length];
 
             // On alimente le tableau
@@ -66,8 +65,8 @@ namespace MathematiqueDevoir3
                     {
                         // On applique le déchiffrement CBC en même temps qu'on alimente le tableau
                         tableau[l, c] = vi;
-                        tableau[l, c] ^= message[index];
-                        vi = message[index++];
+                        tableau[l, c] ^= bytes[index];
+                        vi = bytes[index++];
                     }
             }
 

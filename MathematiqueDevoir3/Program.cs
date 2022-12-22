@@ -8,7 +8,7 @@ namespace MathematiqueDevoir3
     {
         static void Main(string[] args)
         {
-            byte[] result = new byte[0];
+            string result = "";
 
             string selection;
             do
@@ -29,11 +29,10 @@ namespace MathematiqueDevoir3
                         result = Chiffrement.Chiffrer(message, Console.ReadLine());
                         Console.WriteLine();
 
-                        Console.WriteLine("Message chiffré: " + Encoding.ASCII.GetString(result.Where(b => b >= 32).ToArray()));
-                        Console.WriteLine("Représentation binaire: [" + String.Join(", ", result.Select(b => Convert.ToString(b, 2)).ToArray()) + "]");
+                        Console.WriteLine("Message chiffré: " + new string(result.Where(c => c >= 32).ToArray()));
                         break;
                     case "2":
-                        if (result.Length == 0) {
+                        if (String.IsNullOrEmpty(result)) {
                             Console.WriteLine("Aucun message à déchiffrer.");
                             break;
                         }
